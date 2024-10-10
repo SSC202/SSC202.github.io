@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>STM32 HAL 2_最小系统电路</title>
+    <link href="/2024/10/10/STM32%20HAL%202_%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF/"/>
+    <url>/2024/10/10/STM32%20HAL%202_%E6%9C%80%E5%B0%8F%E7%B3%BB%E7%BB%9F%E7%94%B5%E8%B7%AF/</url>
+    
+    <content type="html"><![CDATA[<h1 id="STM32-HAL-2-最小系统电路"><a href="#STM32-HAL-2-最小系统电路" class="headerlink" title="STM32 HAL 2_最小系统电路"></a>STM32 HAL 2_最小系统电路</h1><p>最小系统电路：保证MCU正常工作的最小电路组成单元;</p><blockquote><table><thead><tr><th>类型</th><th>引脚</th><th>说明</th></tr></thead><tbody><tr><td>电源</td><td>VDD&#x2F;VSS</td><td>电源引脚，用于给STM32供电;</td></tr><tr><td></td><td>VDDA&#x2F;VSSA</td><td>模拟部分电源引脚，用于给STM32模拟部分电路供电;</td></tr><tr><td></td><td>VREF+&#x2F;VREF-</td><td>参考电压引脚，为ADC&#x2F;DAC提供参考电压;</td></tr><tr><td></td><td>VBAT</td><td>RTC&#x2F;后备区域引脚，给RTC和后备区域供电;一般VBAT接电 池，用于断电维持RTC工作，若不需要时接VDD;</td></tr><tr><td>复位</td><td>NRST</td><td>用于STM32低电平复位</td></tr><tr><td>启动</td><td>BOOT0&#x2F;BOOT1</td><td>启动选择引脚</td></tr><tr><td>晶振</td><td>OSC_IN&#x2F;OSC_OUT</td><td>外部HSE晶振引脚，为STM32提供高精度系统时钟。使用内部HSI时可不接晶振。</td></tr><tr><td></td><td>OSC32_IN&#x2F;OSC32_OUT</td><td>外部LSE晶振引脚，为RTC提供时钟。使用内部LSI时可不接晶振。</td></tr><tr><td>调试</td><td>SWCLK&#x2F;SWDIO</td><td>SWD调试引脚</td></tr></tbody></table></blockquote><ol><li><strong>电源电路</strong></li></ol><p>数字电源：AMS1117-3.3为稳压器，将5V电压变为3.3V电压。</p><p>模拟电源：使用RC低通滤波器;</p><p>RTC&#x2F;后备区域电源：使用纽扣电池供电;</p><ol start="2"><li><strong>复位电路</strong></li></ol><p>STM32复位引脚NRST保持低电平状态时间1~4.5ms即可复位。</p><p>上电时，由于电容处于短路状态，STM32低电平复位。</p><ol start="3"><li><strong>BOOT启动电路</strong></li></ol><ol start="4"><li><strong>晶振电路</strong></li></ol><p>低速晶振(LSE)</p><p>高速晶振(HSE)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>STM32</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>STM32 HAL 1_环境配置</title>
     <link href="/2024/10/10/STM32%20HAL%201_%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
     <url>/2024/10/10/STM32%20HAL%201_%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
