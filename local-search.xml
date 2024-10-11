@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Conda_简介</title>
+    <link href="/2024/10/10/Conda-%E7%AE%80%E4%BB%8B/"/>
+    <url>/2024/10/10/Conda-%E7%AE%80%E4%BB%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Conda-简介"><a href="#Conda-简介" class="headerlink" title="Conda 简介"></a>Conda 简介</h1><p>conda 是一个开源的软件包管理系统和环境管理软件，用于安装多个版本的软件包及其依赖关系，并在它们之间轻松切换。conda 是为Python程序创建的，类似于 Linux、MacOS、Windows，也可以打包和分发其他软件。</p><h2 id="1-Conda-安装"><a href="#1-Conda-安装" class="headerlink" title="1. Conda 安装"></a>1. Conda 安装</h2><p>conda 分为 anaconda 和 miniconda，anaconda 是一个包含了许多常用库的集合版本，miniconda 是精简版本（只包含conda、pip、zlib、python 以及它们所需的包），剩余的通过 <code>conda install command</code> 命令自行安装即可；</p><blockquote><ul><li><a href="https://conda.io/miniconda.html">miniconda 官网</a></li><li><a href="https://www.anaconda.com/download">anaconda 官网</a></li></ul></blockquote><p>注意，安装时需要将conda添加到系统环境变量中（无论是Windows还是Ubuntu Bash&#x2F;Zsh）。</p><p>使用以下命令验证安装：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda --version</span><br></code></pre></td></tr></table></figure><blockquote><ul><li>conda 更新</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda update conda</span><br></code></pre></td></tr></table></figure></blockquote><h2 id="2-Conda-换源"><a href="#2-Conda-换源" class="headerlink" title="2. Conda 换源"></a>2. Conda 换源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/<br>conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/bioconda/<br>conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/cloud/conda-forge/<br>conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/pkgs/free/<br>conda config --add channels https://mirrors.bfsu.edu.cn/anaconda/pkgs/main/<br></code></pre></td></tr></table></figure><p>查看已经添加的源：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda config --get channels</span><br></code></pre></td></tr></table></figure><h2 id="3-环境管理"><a href="#3-环境管理" class="headerlink" title="3. 环境管理"></a>3. 环境管理</h2><h3 id="创建-删除环境"><a href="#创建-删除环境" class="headerlink" title="创建&#x2F;删除环境"></a>创建&#x2F;删除环境</h3><p>命令创建python版本为X.X、名字为 env_name 的虚拟环境。env_name文件可以在Anaconda安装目录 envs文件下找到。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda create -n [env_name] python=X.X</span><br></code></pre></td></tr></table></figure><p>输入以下命令查看当前存在的环境：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> list</span><br></code></pre></td></tr></table></figure><p>删除环境：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda remove -n [env_name] --all</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda <span class="hljs-built_in">env</span> remove -n [env_name]</span><br></code></pre></td></tr></table></figure><p>重命名环境：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda create -n [new_name] --<span class="hljs-built_in">clone</span> [old_name]</span><br></code></pre></td></tr></table></figure><p>进入&#x2F;退出环境：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda activate env_name  <span class="hljs-comment"># 进入环境</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">conda deactivate<span class="hljs-comment"># 退出环境</span></span><br></code></pre></td></tr></table></figure><h2 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h2><ol><li>提示 “无法加载文件C:\XXX\WindowsPowerShell\profile.ps1，因为在此系统上禁止运行脚本” 的错误</li></ol><blockquote><ol><li>以管理员身份运行PowerShell；</li><li>执行：<code>get-ExecutionPolicy</code>，回复Restricted，表示状态是禁止的；</li><li>执行：<code>set-ExecutionPolicy RemoteSigned</code>即可。</li></ol></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>杂项</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>杂项</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Test</title>
     <link href="/2024/10/10/Test/"/>
     <url>/2024/10/10/Test/</url>
