@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Git_1_Git的安装和配置</title>
+    <link href="/2024/10/11/Git-1-Git%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
+    <url>/2024/10/11/Git-1-Git%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Git-1-Git的安装配置"><a href="#Git-1-Git的安装配置" class="headerlink" title="Git 1_Git的安装配置"></a>Git 1_Git的安装配置</h1><h2 id="1-Git-的安装"><a href="#1-Git-的安装" class="headerlink" title="1. Git 的安装"></a>1. Git 的安装</h2><h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">sudo</span> apt install libcurl4-gnutls-dev libexpat1-dev gettext \</span><br><span class="language-bash">  libz-dev libssl-dev</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">sudo</span> apt install git</span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git --version</span><br></code></pre></td></tr></table></figure><h2 id="2-Git-的配置"><a href="#2-Git-的配置" class="headerlink" title="2. Git 的配置"></a>2. Git 的配置</h2><p>Git 提供了一个叫做 git config 的工具，专门用来配置或读取相应的工作环境变量。</p><p>在Ubuntu中，这些变量可以存放在以下三个不同的地方：</p><ul><li><code>/etc/gitconfig</code> 文件：系统中对所有用户都普遍适用的配置。若使用 <code>git config</code> 时用 <code>--system</code> 选项，读写的就是这个文件。</li><li><code>~/.gitconfig</code> 文件：用户目录下的配置文件只适用于该用户。若使用 <code>git config</code> 时用 <code>--global</code> 选项，读写的就是这个文件。</li><li>当前项目的 Git 目录中的配置文件（也就是工作目录中的 <code>.git/config</code> 文件）：这里的配置仅仅针对当前项目有效。每一个级别的配置都会覆盖上层的相同配置，所以 <code>.git/config</code> 里的配置会覆盖 <code>/etc/gitconfig</code> 中的同名变量。</li></ul><p>在Windows中，Git 会找寻用户主目录下的 <code>.gitconfig</code> 文件。主目录即 <code>$HOME</code> 变量指定的目录，一般都是 <code>C:\Documents and Settings\$USER</code>。</p><h3 id="用户信息设置"><a href="#用户信息设置" class="headerlink" title="用户信息设置"></a>用户信息设置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="hljs-string">&quot;runoob&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email <span class="hljs-built_in">test</span>@runoob.com</span><br></code></pre></td></tr></table></figure><p>如果要在某个特定的项目中使用其他名字或者电邮，只要去掉 <code>--global</code> 选项重新配置即可，新的设定保存在当前项目的 <code>.git/config</code> 文件里。</p><h3 id="文本编辑器设置"><a href="#文本编辑器设置" class="headerlink" title="文本编辑器设置"></a>文本编辑器设置</h3><p>设置Git默认使用的文本编辑器, 一般可能会是 Vi 或者 Vim。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global core.editor emacs</span><br></code></pre></td></tr></table></figure><h3 id="查看配置信息"><a href="#查看配置信息" class="headerlink" title="查看配置信息"></a>查看配置信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --list</span><br></code></pre></td></tr></table></figure><p>也可以在 <code>~/.gitconfig</code> 或 <code>/etc/gitconfig</code> 看到。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>杂项</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Git</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Conda_简介</title>
     <link href="/2024/10/10/Conda-%E7%AE%80%E4%BB%8B/"/>
     <url>/2024/10/10/Conda-%E7%AE%80%E4%BB%8B/</url>
